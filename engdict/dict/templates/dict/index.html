@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="" method='post'>
+                {% csrf_token %}
+                <table>
+                    {{wordform.as_table}}
+                </table>
+                <input type="submit" value='OK'>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">en</th>
+                        <th scope="col">ru</th>
+                        <th scope="col">del</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word in words %}
+
+
+                    <tr>
+                        <td>{{word.title}}</td>
+                        <td>{{word.description}}</td>
+                        <td><a href="delete/{{word.pk}}">Delete</a></td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
